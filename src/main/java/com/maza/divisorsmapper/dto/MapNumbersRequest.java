@@ -17,7 +17,7 @@ public class MapNumbersRequest {
     @NotEmpty(message = "Numbers list should not be empty")
     private List<
         @Min(value = 1, message = "Number should not be less than 1")
-        @Max(value = 20, message = "Number should not be greater than 1")
+        @Max(value = 20, message = "Number should not be greater than 20")
             Integer> numbers;
 
 }
