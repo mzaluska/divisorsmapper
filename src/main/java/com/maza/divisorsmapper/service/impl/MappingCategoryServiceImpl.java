@@ -1,6 +1,7 @@
 package com.maza.divisorsmapper.service.impl;
 
 import com.maza.divisorsmapper.dto.MappingCategoriesResponse;
+import com.maza.divisorsmapper.exception.InvalidMappingCategoryException;
 import com.maza.divisorsmapper.model.Category;
 import com.maza.divisorsmapper.model.Mapping;
 import com.maza.divisorsmapper.repository.CategoryRepository;
@@ -33,6 +34,9 @@ public class MappingCategoryServiceImpl implements MappingCategoryService {
     @Override
     public Map<Integer, String> getMappingForCategory(final String name) {
         final List<Mapping> allByCategoryName = mappingRepository.findAllByCategoryName(name);
+        if (allByCategoryName.isEmpty()) {
+            throw new InvalidMappingCategoryException();
+        }
         return allByCategoryName.stream().collect(Collectors.toMap(Mapping::getNumber, Mapping::getWord));
     }
 }

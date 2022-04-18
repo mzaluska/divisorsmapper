@@ -1,6 +1,7 @@
 package com.maza.divisorsmapper.service.impl;
 
 import com.maza.divisorsmapper.dto.MapNumbersResponse;
+import com.maza.divisorsmapper.exception.InvalidMappingCategoryException;
 import com.maza.divisorsmapper.exception.NoSuchMappingForNumberException;
 import com.maza.divisorsmapper.model.Mapping;
 import com.maza.divisorsmapper.repository.MappingRepository;
@@ -50,6 +51,9 @@ public class DivisorsServiceImpl implements DivisorsService {
 
     private Map<Integer, String> findMappingsForCategory(final String category) {
         final List<Mapping> allByCategoryName = mappingRepository.findAllByCategoryName(category);
+        if (allByCategoryName.isEmpty()) {
+            throw new InvalidMappingCategoryException();
+        }
         return allByCategoryName.stream().collect(Collectors.toMap(Mapping::getNumber, Mapping::getWord));
     }
 
