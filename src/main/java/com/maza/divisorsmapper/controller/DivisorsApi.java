@@ -22,7 +22,7 @@ public interface DivisorsApi {
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Success response when divisors and mapping found",
             content = {@Content(mediaType = "application/json",
-                schema = @Schema(implementation = MapNumbersResponse.class))}),
+                schema = @Schema(implementation = MapNumbersResponse.class, description = "Result map where key is a given number and value is a list of mapped divisors"))}),
         @ApiResponse(responseCode = "400", description = "Invalid input supplied - wrong category or numbers from invalid range", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
         @ApiResponse(responseCode = "404", description = "Mapping not found", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
         @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
