@@ -22,6 +22,11 @@ Project is created with:
 
 ## Usage
 
+Locally application is running on
+```
+http://localhost:8081
+```
+
 List of specified endpoints is visible in swagger documentation
 ```
 GET /api/swagger-ui/index.html
@@ -37,6 +42,12 @@ and body
 }
 ```
 where [1, 2, 4] is an example list of numbers.
+
+List of available categories is visible with endpoint
+
+```
+GET /api/categories/
+```
 
 ## Version
 
